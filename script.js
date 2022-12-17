@@ -3,7 +3,7 @@ document.querySelector("#push").addEventListener('click', function(){
     alert("Please Enter a Task");
   } else {
     document.querySelector("#tasks").innerHTML += `
-      <div class="task">
+      <div class="task id="draggable">
         <span id="taskname">
           ${document.querySelector("#newtask input").value}
         </span>
@@ -18,8 +18,14 @@ document.querySelector("#push").addEventListener('click', function(){
       current_tasks[i].addEventListener('click', function(){
         this.parentNode.remove();
       })
-    }
 
+      let dragged = document.querySelectorAll('.newtask')
+      for(let i = 0; i < dragged.length; i++){
+        dragged[i].addEventListener('dragStart', function(){
+          const dragged = this;
+        })
+      }
+    }
     var tasks = document.querySelectorAll(".task");
     for (let i = 0; i < tasks.length; i++) {
       tasks[i].addEventListener('click', function(){
@@ -31,9 +37,3 @@ document.querySelector("#push").addEventListener('click', function(){
   }
 });
 
-// const testColor = document.querySelector('.test')
-
-
-// testColor.addEventListener('click',function(){
-//   document.querySelector('.test').style.backgroundColor = 'blue'
-// })
